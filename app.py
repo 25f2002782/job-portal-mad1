@@ -50,5 +50,18 @@ def dashboard():
     user = User.query.get(session['user_id'])
     return render_template('dashboard.html', user=user)
 
+
+# PROFILE
+@app.route('/profile')
+def profile():
+    user = User.query.get(session['user_id'])
+    return render_template('profile.html', user=user)
+
+# LOGOUT
+@app.route('/logout')
+def logout():
+    session.clear()
+    return redirect('/login')    
+
 if __name__ == '__main__':
     app.run(debug=True)
