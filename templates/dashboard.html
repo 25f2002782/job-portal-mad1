@@ -2,5 +2,10 @@
 
 <p>Role: {{ user.role }}</p>
 
-<a href="/profile">View Profile</a><br>
+{% if user.role == 'recruiter' %}
+    <a href="/post_job">Post Job</a><br>
+{% endif %}
+
+<a href="/view_jobs">View Jobs</a><br>
+<a href="/profile">Profile</a><br>
 <a href="/logout">Logout</a>

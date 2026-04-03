@@ -1,0 +1,10 @@
+<h2>All Jobs</h2>
+
+{% for job in jobs %}
+    <p><b>{{ job.title }}</b></p>
+    <p>{{ job.description }}</p>
+    <p>Skills: {{ job.skills }}</p>
+    <hr>
+{% endfor %}
+
+<a href="/dashboard">Back</a>

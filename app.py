@@ -1,3 +1,4 @@
+from models import db, User, Job
 from flask import Flask, render_template, request, redirect, session
 from models import db, User
 
@@ -33,6 +34,8 @@ def signup():
 
 @app.route('/login', methods=['GET', 'POST'])
 def login():
+    error = None
+
     if request.method == 'POST':
         user = User.query.filter_by(
             email=request.form['email'],
@@ -42,8 +45,10 @@ def login():
         if user:
             session['user_id'] = user.id
             return redirect('/dashboard')
+        else:
+            error = "Invalid email or password"
 
-    return render_template('login.html')
+    return render_template('login.html', error=error)
 
 @app.route('/dashboard')
 def dashboard():
@@ -62,6 +67,29 @@ def profile():
 def logout():
     session.clear()
     return redirect('/login')    
+
+# POST JOB (RECRUITER)
+@app.route('/post_job', methods=['GET', 'POST'])
+def post_job():
+    if request.method == 'POST':
+        job = Job(
+            title=request.form['title'],
+            description=request.form['description'],
+            skills=request.form['skills'],
+            recruiter_id=session['user_id']
+        )
+        db.session.add(job)
+        db.session.commit()
+        return redirect('/dashboard')
+
+    return render_template('post_job.html')
+
+
+# VIEW JOBS (ALL USERS)
+@app.route('/view_jobs')
+def view_jobs():
+    jobs = Job.query.all()
+    return render_template('view_jobs.html', jobs=jobs)
 
 if __name__ == '__main__':
     app.run(debug=True)

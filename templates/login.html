@@ -8,3 +8,7 @@
 
 <p>Don't have an account?</p>
 <a href="/signup">Go to Signup</a>
+
+{% if error %}
+<p style="color:red;">{{ error }}</p>
+{% endif %}
