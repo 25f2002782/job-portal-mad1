@@ -4,8 +4,13 @@
 
 {% if user.role == 'recruiter' %}
     <a href="/post_job">Post Job</a><br>
+    <a href="/view_applicants">View Applicants</a><br>
 {% endif %}
 
-<a href="/view_jobs">View Jobs</a><br>
+{% if user.role == 'student' %}
+    <a href="/view_jobs">View Jobs</a><br>
+    <a href="/my_applications">My Applications</a><br>
+{% endif %}
+
 <a href="/profile">Profile</a><br>
 <a href="/logout">Logout</a>

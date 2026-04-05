@@ -4,6 +4,9 @@
     <p><b>{{ job.title }}</b></p>
     <p>{{ job.description }}</p>
     <p>Skills: {{ job.skills }}</p>
+
+    <a href="/apply/{{ job.id }}">Apply</a>
+
     <hr>
 {% endfor %}
 

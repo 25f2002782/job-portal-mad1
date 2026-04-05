@@ -1,0 +1,18 @@
+<h2>Applicants</h2>
+
+{% if applications %}
+    {% for app in applications %}
+        <p>
+            <b>{{ app.student.name }}</b> applied for 
+            <b>{{ app.job.title }}</b>
+        </p>
+
+        <a href="/student/{{ app.student.id }}">View Profile</a>
+
+        <hr>
+    {% endfor %}
+{% else %}
+    <p>No applications yet</p>
+{% endif %}
+
+<a href="/dashboard">Back</a>

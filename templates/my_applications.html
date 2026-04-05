@@ -1,0 +1,14 @@
+<h2>My Applications</h2>
+
+{% if applications %}
+    {% for app in applications %}
+        <p><b>{{ app.job.title }}</b></p>
+        <p>{{ app.job.description }}</p>
+        <p>Skills: {{ app.job.skills }}</p>
+        <hr>
+    {% endfor %}
+{% else %}
+    <p>No applications yet</p>
+{% endif %}
+
+<a href="/dashboard">Back</a>
