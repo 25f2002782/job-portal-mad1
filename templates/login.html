@@ -1,14 +1,29 @@
-<form method="POST">
-    <h2>Login</h2>
-    Email: <input type="email" name="email"><br>
-    Password: <input type="password" name="password"><br>
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Login</title>
+    <link rel="stylesheet" href="/static/style.css">
+</head>
 
-    <button type="submit">Login</button>
-</form>
+<body>
 
-<p>Don't have an account?</p>
-<a href="/signup">Go to Signup</a>
+<div class="container">
+    <div class="card">
+        <h2>Login</h2>
 
-{% if error %}
-<p style="color:red;">{{ error }}</p>
-{% endif %}
+        {% if error %}
+        <p style="color:red;">{{ error }}</p>
+        {% endif %}
+
+        <form method="POST">
+            <input type="email" name="email" placeholder="Email">
+            <input type="password" name="password" placeholder="Password">
+            <button type="submit">Login</button>
+        </form>
+
+        <a href="/signup">Signup</a>
+    </div>
+</div>
+
+</body>
+</html>

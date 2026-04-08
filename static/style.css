@@ -1,0 +1,62 @@
+body {
+    background-color: #ffe5d9;  /* light peach */
+    margin: 0;
+    padding: 0;
+    font-family: Arial, sans-serif;
+}
+
+/* Center container */
+.container {
+    width: 400px;
+    margin: 80px auto;
+}
+
+/* Card box */
+.card {
+    background: white;
+    padding: 25px;
+    border-radius: 10px;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+    text-align: center;
+}
+
+/* Stack form elements vertically */
+form {
+    display: flex;
+    flex-direction: column;
+}
+
+/* Inputs */
+input, select {
+    padding: 10px;
+    margin: 10px 0;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+}
+
+/* Button */
+button {
+    padding: 10px;
+    background: #e76f51;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+button:hover {
+    background: #d65a3f;
+}
+
+/* Links */
+a {
+    display: block;
+    margin-top: 10px;
+    color: #e76f51;
+    font-weight: bold;
+}
+
+/* Headings */
+h2 {
+    text-align: center;
+}

@@ -1,13 +1,34 @@
-<h2>All Jobs</h2>
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Jobs</title>
+    <link rel="stylesheet" href="/static/style.css">
+</head>
 
-{% for job in jobs %}
-    <p><b>{{ job.title }}</b></p>
-    <p>{{ job.description }}</p>
-    <p>Skills: {{ job.skills }}</p>
+<body>
 
-    <a href="/apply/{{ job.id }}">Apply</a>
+<div class="container">
+    <div class="card">
+        <h2>Jobs</h2>
 
-    <hr>
-{% endfor %}
+        <form method="POST">
+            <input type="text" name="search" placeholder="Search jobs">
+            <button type="submit">Search</button>
+        </form>
 
-<a href="/dashboard">Back</a>
+        {% for job in jobs %}
+            <div class="card">
+                <h3>{{ job.title }}</h3>
+                <p>{{ job.description }}</p>
+                <p><b>Skills:</b> {{ job.skills }}</p>
+
+                <a href="/apply/{{ job.id }}">Apply</a>
+            </div>
+        {% endfor %}
+
+        <a href="/dashboard">Back</a>
+    </div>
+</div>
+
+</body>
+</html>

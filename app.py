@@ -1,7 +1,7 @@
 from flask import Flask, render_template, request, redirect, session
 from models import db, User, Job, Application
 
-app = Flask(__name__)
+app = Flask(__name__, static_folder='static')
 
 app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///database.db'
 app.config['SECRET_KEY'] = 'secret'
@@ -98,9 +98,15 @@ def post_job():
 
 
 # VIEW JOBS
-@app.route('/view_jobs')
+@app.route('/view_jobs', methods=['GET', 'POST'])
 def view_jobs():
-    jobs = Job.query.all()
+    search = request.form.get('search')
+
+    if search:
+        jobs = Job.query.filter(Job.title.contains(search)).all()
+    else:
+        jobs = Job.query.all()
+
     return render_template('view_jobs.html', jobs=jobs)
 
 

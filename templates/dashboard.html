@@ -1,16 +1,31 @@
-<h2>Welcome {{ user.name }}</h2>
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Dashboard</title>
+    <link rel="stylesheet" href="/static/style.css">
+</head>
 
-<p>Role: {{ user.role }}</p>
+<body>
 
-{% if user.role == 'recruiter' %}
-    <a href="/post_job">Post Job</a><br>
-    <a href="/view_applicants">View Applicants</a><br>
-{% endif %}
+<div class="container">
+    <div class="card">
+        <h2>Welcome {{ user.name }}</h2>
+        <p>Role: {{ user.role }}</p>
 
-{% if user.role == 'student' %}
-    <a href="/view_jobs">View Jobs</a><br>
-    <a href="/my_applications">My Applications</a><br>
-{% endif %}
+        {% if user.role == 'recruiter' %}
+            <a href="/post_job">Post Job</a>
+            <a href="/view_applicants">View Applicants</a>
+        {% endif %}
 
-<a href="/profile">Profile</a><br>
-<a href="/logout">Logout</a>
+        {% if user.role == 'student' %}
+            <a href="/view_jobs">View Jobs</a>
+            <a href="/my_applications">My Applications</a>
+        {% endif %}
+
+        <a href="/profile">Profile</a>
+        <a href="/logout">Logout</a>
+    </div>
+</div>
+
+</body>
+</html>
